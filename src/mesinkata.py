@@ -1,6 +1,9 @@
 import glob
+from src.stemming import *
+
 
 def read_query(kalimat):
+    #kalimat = stemming(kalimat)
     List = []
     temp = ''
     for char in kalimat:
@@ -15,17 +18,34 @@ def read_query(kalimat):
 
 def read_doc(filename):
     List = []
-    with open(filename,'r') as file:
+    strr =""
+    with open(filename,'r',errors="ignore") as file:
         for line in file:
-            for word in line.split():
-                List.append(word)
+            strr = strr+line
 
-    return List
+    return read_query(strr)
 
-listfile = glob.glob('test\\*.txt')
-if (listfile == []):  #preventif kalau beda directory
-    listfile = glob.glob('..\\test\\*.txt')
 
-# contoh
-print(read_query('test queerryyyyy'))
-print(read_doc(listfile[0]))
+
+def listfile(filedir):
+    return  glob.glob(filedir)
+
+def getparentdir(childdir):
+    n = len(childdir)-1
+    while(childdir[n]!="\\"):
+        childdir=childdir[:n:]
+        n=n-1
+    return childdir
+
+def getfilename(directory):
+    a = getparentdir(directory)
+    s=""
+    for x in range(len(a),len(directory)):
+        s = s+directory[x]
+
+    return s
+
+def getjudul(filee):
+    a = getfilename(filee)
+    a = a[:len(a)-4:]
+    return a
