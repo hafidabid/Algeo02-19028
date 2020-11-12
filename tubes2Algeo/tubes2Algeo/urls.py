@@ -21,5 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'',views.cobacek,{},name="home"),
-    path(r'q/',views.searchresult,{},name="home2")
+    path(r'q/',views.searchresult,{},name="home2"),
+    path(r'up/',views.upfile,{},name="home2")
 ]

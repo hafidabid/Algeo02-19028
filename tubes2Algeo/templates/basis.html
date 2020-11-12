@@ -45,17 +45,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="">
+                        <form method="post" action="/up/" enctype="multipart/form-data">
                             {%csrf_token%}
                             <div class="input-group mb-3">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-
                                 <div class="input-group-prepend">
                                     <button class="btn btn-info" type="submit">upload</button>
                                 </div>
+
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" name="upfile" id="upfile" required>
+                                  <label class="custom-file-label" for="upfile">Custom file upload</label>>
+                                </div>
+
+                                
                             </div>
                         </form>
                     </div>
@@ -65,3 +67,11 @@
         
     </body>
 </html>
+
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+    </script>

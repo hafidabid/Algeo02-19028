@@ -35,6 +35,7 @@ def toVector(anDict):
 
     return retlist
 
+
 qweri = "playstation"
 qweri = stemming(qweri)
 qd = makeQueryVektor(qweri)
