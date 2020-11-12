@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from search_engine import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'',views.cobacek,{})
+    path(r'',views.cobacek,{},name="home"),
+    path(r'q/',views.searchresult,{},name="home2")
 ]

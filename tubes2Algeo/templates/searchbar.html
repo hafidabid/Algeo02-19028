@@ -1,0 +1,20 @@
+{%extends 'basis.html'%}
+
+{%block searchbar%}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Search Engine</h1>
+        <hr class="my-4">
+        <form action="/q/" method="POST">
+        {% csrf_token %}
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input id="my-input" class="form-control" type="text" name="pencarian" placeholder="Tempat jual babi yang halal" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Seach Now!</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+{%endblock searchbar%}
