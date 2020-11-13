@@ -22,7 +22,7 @@
                 <ul class="navbar-nav ml-auto" id="ataskanan"></ul>
                 <ul class="navbar-nav">
                     <li class="nav-item" id="tulisanlogin"><a class="nav-link" href="/retzeroooo/">Reset</a></li>
-                    <li class="nav-item" onclick="funcatas('ataskanan','tulisanlogin')" id="tulisanlogin"><a class="nav-link">Docs list</a></li>  
+                    <li class="nav-item" id="list"><a class="nav-link" href="#listmodal" data-toggle="modal" data-target="#listmodal">Docs list</a></li>  
                     <li class="nav-item" id="daftaryuk"><a class="nav-link" href="#mymodal" data-toggle="modal" data-target="#mymodal">Add docs</a></li>
                 </ul>
             </div>
@@ -73,6 +73,44 @@
                                 
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="listmodal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Document List</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {%if list%}
+                            {% for a in list %}
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5 style=>{{a.title}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {%elif result_pencarian%}
+                            {% for b in result_pencarian %}
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5>{{b.title}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {%else%}
+                        No document uploaded
+                        {%endif%}
                     </div>
                 </div>
             </div>

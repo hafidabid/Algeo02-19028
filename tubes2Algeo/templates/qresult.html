@@ -7,14 +7,14 @@
     <table class="table table-light">
         <tbody>
             {% for x in result_pencarian %}
-                {%if x.similaritas > 0.005%}
+                {%if x.similaritas > 0%}
                 <tr>
                     <td>
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-3 border-right">
-                                        <a class="card-title"><h5>{{x.title}}</h5></a>
+                                        <a class="card-title" href='{{x.ori_file}}'><h5>{{x.title}}</h5></a>
                                         <a class="card-link btn btn btn-outline-primary btn-sm" href="#mymodall{{x.id}}" data-toggle="modal" data-target="#mymodall{{x.id}}">cosine similarity detail</a>
                                     </div>
                                     <div class="col-md-9">

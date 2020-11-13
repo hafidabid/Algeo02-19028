@@ -12,7 +12,12 @@ import os
 import shutil
 
 def cobacek(request):
-    return render(request,'searchbar.html',{})
+    a = filestorage.objects.all()
+    listfile = []
+    for x in a: 
+        listfile.append(x.judul)
+    
+    return render(request,'searchbar.html',{'list' : listfile})
 
 def perihal(request):
     return render(request,'perihal.html', {})
