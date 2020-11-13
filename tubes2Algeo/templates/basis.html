@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Bootstrap 4 Example</title>
+        <title>Revolt Search!</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'bootstrap\css\bootstrap.min.css' %}">
@@ -13,7 +13,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
             <div class="mx-auto order-0">
-                <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+                <a class="navbar-brand mx-auto" href="/">Revolt Search</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -21,6 +21,7 @@
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto" id="ataskanan"></ul>
                 <ul class="navbar-nav">
+                    <li class="nav-item" id="tulisanlogin"><a class="nav-link" href="/retzeroooo/">Reset</a></li>
                     <li class="nav-item" onclick="funcatas('ataskanan','tulisanlogin')" id="tulisanlogin"><a class="nav-link">Docs list</a></li>  
                     <li class="nav-item" id="daftaryuk"><a class="nav-link" href="#mymodal" data-toggle="modal" data-target="#mymodal">Add docs</a></li>
                 </ul>
@@ -29,7 +30,6 @@
 
         
         {%block searchbar%}
-
         {%endblock searchbar%}
 
         {%block qresult%}
@@ -48,6 +48,7 @@
                         <form method="post" action="/up/" enctype="multipart/form-data">
                             {%csrf_token%}
                             <div class="input-group mb-3">
+                                
                                 <div class="input-group-prepend">
                                     <button class="btn btn-info" type="submit">upload</button>
                                 </div>

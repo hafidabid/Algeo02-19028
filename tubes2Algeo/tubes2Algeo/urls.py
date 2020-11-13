@@ -17,10 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from search_engine import views
 from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'',views.cobacek,{},name="home"),
     path(r'q/',views.searchresult,{},name="home2"),
-    path(r'up/',views.upfile,{},name="home2")
+    path(r'up/',views.upfile,{},name="uploader"),
+    path(r'retzeroooo/',views.reset,{},name="resetapp")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

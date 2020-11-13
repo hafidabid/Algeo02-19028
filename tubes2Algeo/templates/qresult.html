@@ -6,20 +6,71 @@
     <h3>Search Result</h3>
     <table class="table table-light">
         <tbody>
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="card-body">
-                            <a class="card-title"><h5>Title</h5></a>
-                            <p class="card-text">Content</p>
-                            <a class="card-link btn btn btn-outline-primary btn-sm">cosine similarity detail</a>
+            {% for x in result_pencarian %}
+                {%if x.similaritas > 0.005%}
+                <tr>
+                    <td>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 border-right">
+                                        <a class="card-title"><h5>{{x.title}}</h5></a>
+                                        <a class="card-link btn btn btn-outline-primary btn-sm" href="#mymodall{{x.id}}" data-toggle="modal" data-target="#mymodall{{x.id}}">cosine similarity detail</a>
+                                    </div>
+                                    <div class="col-md-9">
+                                    <p align="justify">{{x.preview}}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+                {%endif%}
+            {% endfor %}
         </tbody>
     </table>
 </div>
 </div>
+
+{% for x in result_pencarian %}
+<div id="mymodall{{x.id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cosine similarity details</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>your cosine similarity = {{x.similaritas}}</p>
+                <p>Tabel kesesuaian dengan term (agar tidak terlalu banyak hanya term yang bernilai >0 saja saja yang ditampilkan, namun dalam backend tetap pakai cosine similarity dengan kamus kata)</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Term</th>
+                        <th scope="col">Kemunculan di dokumen</th>
+                        <th scope="col">Kemunculan di queri pencarian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for kunci,kemunculan in x.vectorDict.items%}
+                        {%if kemunculan > 0 or dict_query|get_item:kunci > 0%}
+                        <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{kunci}}</td>
+                        <td>{{kemunculan}}</td>
+                        <td>{{dict_query|get_item:kunci}}</td>
+                        </tr>
+                        {%endif%}
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}
 
 {%endblock qresult%}
