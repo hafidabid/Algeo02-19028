@@ -14,6 +14,9 @@ import shutil
 def cobacek(request):
     return render(request,'searchbar.html',{})
 
+def perihal(request):
+    return render(request,'perihal.html', {})
+
 def searchresult(req):
     if req.method=="POST":
         q = req.POST['pencarian']

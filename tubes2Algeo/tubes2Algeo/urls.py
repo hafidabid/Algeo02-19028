@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'',views.cobacek,{},name="home"),
+    path(r'perihal/',views.perihal,{},name="home"),
     path(r'q/',views.searchresult,{},name="home2"),
     path(r'up/',views.upfile,{},name="uploader"),
     path(r'retzeroooo/',views.reset,{},name="resetapp")
