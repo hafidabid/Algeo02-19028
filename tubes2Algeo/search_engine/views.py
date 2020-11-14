@@ -20,7 +20,11 @@ def cobacek(request):
     return render(request,'searchbar.html',{'list' : listfile})
 
 def perihal(request):
-    return render(request,'perihal.html', {})
+    a = filestorage.objects.all()
+    listfile = []
+    for x in a: 
+        listfile.append(x.judul)
+    return render(request,'perihal.html',{'list' : listfile})
 
 def searchresult(req):
     if req.method=="POST":
