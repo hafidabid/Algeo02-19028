@@ -50,6 +50,7 @@ def searchresult(req):
                     arr = makeDocsVektor(makeNolDict(oldkamus),newpath)
                     vektor_dokumen[x.judul] = toVector(arr)
                     hasil.setvectorDict(arr)
+                    hasil.setJumlahKata(len(read_doc(newpath)))
                 
                 if os.path.exists(prevpath):
                     preview_dokumen[x.judul] = getPrevDocs(prevpath)

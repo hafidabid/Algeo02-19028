@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-md-3 border-right">
                                         <a class="card-title" href='{{x.ori_file}}'><h5>{{x.title}}</h5></a>
-                                        <a class="card-link btn btn btn-outline-primary btn-sm" href="#mymodall{{x.id}}" data-toggle="modal" data-target="#mymodall{{x.id}}">cosine similarity detail</a>
+                                        <a class="card-link btn btn btn-outline-primary btn-sm" href="#mymodall{{x.id}}" data-toggle="modal" data-target="#mymodall{{x.id}}">Details</a>
                                     </div>
                                     <div class="col-md-9">
                                     <p align="justify">{{x.preview}}</p>
@@ -27,6 +27,31 @@
                 </tr>
                 {%endif%}
             {% endfor %}
+        </tbody>
+    </table>
+    <h3>Kamus Data</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Term</th>
+                <th>Query</th>
+                {% for x in result_pencarian %}
+                    <th>D{{ forloop.counter }}</th>
+                {%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {% for kunci, kemunculan in dict_query.items %}
+                <tr>
+                    {%if dict_query|get_item:kunci > 0%}
+                    <td>{{kunci}}</td>
+                    <td>{{kemunculan}}</td>
+                    {% for y in result_pencarian %}
+                    <td>{{y.vectorDict|get_item:kunci}}</td>
+                    {%endfor%}
+                    {%endif%}
+                </tr>
+            {%endfor%}
         </tbody>
     </table>
 </div>
@@ -44,6 +69,7 @@
             </div>
             <div class="modal-body">
                 <p>your cosine similarity = {{x.similaritas}}</p>
+                <p>Jumlah kata: {{x.jumlahkata}}</p>
                 <p>Tabel kesesuaian dengan term (agar tidak terlalu banyak hanya term yang bernilai >0 saja saja yang ditampilkan, namun dalam backend tetap pakai cosine similarity dengan kamus kata)</p>
                 <table class="table">
                     <thead>

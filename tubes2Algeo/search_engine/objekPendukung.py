@@ -7,6 +7,7 @@ class HasilPencarian:
         self.similaritas =0
         self.vectorDict= {}
         self.preview = ""
+        self.jumlahkata = 0
 
     
     def setsimilaritas(self,similaritas):
@@ -17,3 +18,6 @@ class HasilPencarian:
     
     def setvectorDict(self,vdict):
         self.vectorDict=vdict
+
+    def setJumlahKata(self,number):
+        self.jumlahkata = number

@@ -2,16 +2,16 @@
 
 {%block searchbar%}
 <div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4">Search Engine</h1>
+    <div class="mt-5">
+        <h1 class="display-4" style="text-align: center;">Revolt Search!</h1>
         <hr class="my-4">
         <form action="/q/" method="POST">
         {% csrf_token %}
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <input id="my-input" class="form-control" type="text" name="pencarian" placeholder="Tempat jual babi yang halal" required>
+                    <input id="my-input" class="form-control" type="text" name="pencarian" placeholder="Cara menjadi kaya, nomer 10 bikin tercengang!" required>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Seach Now!</button>
+                <button type="submit" class="btn btn-primary mb-2">Seach!</button>
             </div>
             
         </form>
