@@ -36,6 +36,14 @@ cd src/tubes2Algeo
 ``` bash
 manage.py runserver
 ```
+atau
+``` bash
+python manage.py runserver
+```
+atau
+``` bash
+python3 manage.py runserver
+```
 > buka http://127.0.0.1:8000/ di web browser
 
 ## Features
