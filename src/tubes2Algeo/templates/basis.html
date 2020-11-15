@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <html>
     <head>
         <title>Revolt Search!</title>
@@ -8,6 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="{% static 'bootstrap\js\bootstrap.min.js'%}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       </head>
 
     <body>
@@ -37,7 +40,7 @@
 
         {%block perihal%}
         {%endblock perihal%}
-
+        
         <footer>
             <div class="container mb-3">
                 <hr />
@@ -115,7 +118,8 @@
                 </div>
             </div>
         </div>
-        
+        {% load sweetify %}
+        {% sweetify %}
     </body>
 </html>
 

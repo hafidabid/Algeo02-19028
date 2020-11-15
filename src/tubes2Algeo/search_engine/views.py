@@ -10,7 +10,7 @@ from search_engine.models import *
 from django.conf import settings
 import os
 import shutil
-
+import sweetify
 def cobacek(request):
     a = filestorage.objects.all()
     listfile = []
@@ -27,8 +27,9 @@ def perihal(request):
     return render(request,'perihal.html',{'list' : listfile})
 
 def searchresult(req):
-    if req.method=="POST":
-        q = req.POST['pencarian']
+    if req.method=="GET":
+        q = req.GET['pencarian']
+        req.session['latest_query'] = q
         q = stemming(q)
         arrq = read_query(q)
         if "kamus_kata" in req.session.keys():
@@ -71,13 +72,16 @@ def searchresult(req):
             #sorting untuk hasil pencarian
             obj_docs.sort(key=lambda x:x.similaritas ,reverse=True)
 
-        else:
-            result_pencarian = {}
-        return render(req,'qresult.html',{
+            return render(req,'qresult.html',{
                 'result_pencarian' : obj_docs,
                 'preview_dokumen' : preview_dokumen,
                 'dict_query' : hitungKamusKata(makeNolDict(oldkamus),arrq)
         })
+
+        else:
+            sweetify.error(req,"tidak ada dokumen, tambahkan dokumen dulu bosq")
+            return redirect('/')
+        
 
 def reset(request):
     a = filestorage.objects.all()
@@ -90,7 +94,7 @@ def reset(request):
     
     request.session.flush()
 
-    
+    sweetify.success(request,"berhasil reset app semua kamus kata dan dokumen telah berhasil di hapus dan aplikasi berada pada posisi kosongan")
     return redirect('/')
 
 def upfile(request):
@@ -99,7 +103,8 @@ def upfile(request):
         filename = fileku.name
         fileext = getFileExtension(filename)
         if(fileext!=".txt"):
-            return HttpResponse("unsuported file!, <a href='/' >return to homepage</a>")
+            sweetify.error(request,"format file tidak di dukung maaf. kami hanya terima format txt saja")
+            return redirect('/')
         else:
             fstorage = FileSystemStorage()
             flname = fstorage.save(name=ignoreSpace(filename),content=fileku)
@@ -121,7 +126,35 @@ def upfile(request):
 
             pushdb = filestorage(url_dokumen=ignoreSpace(filename),url_sastrawee=sastawi_flname, judul=getjudul(filename))
             pushdb.save()
-            return HttpResponse("oke oce = "+fstorage.url(flname)+" <a href='/' >return to homepage</a>")
+            #return HttpResponse("oke oce = "+fstorage.url(flname)+" <a href='/' >click here to return to homepage</a>")
+            sweetify.success(request, 'Berhasil upload file', text='file! '+filename+' telah berhasil diupload ke server!')
+            return redirect('/')
+    
+def artikel(request):
+    my_param = request.GET.get('konten', "nAn")
+    if my_param!="nAn":
+        getdb = filestorage.objects.filter(judul=my_param).first()
+        #print(getdb.url_sastrawee)
+        medpath = os.path.join(settings.BASE_DIR,'media')
+        newpath = os.path.join(medpath,getdb.url_dokumen)
+        fi = open(newpath,'r')
+        arroftxt = fi.readlines()
+
+        if "latest_query" in request.session:
+            lat_q = "/q/?pencarian="+request.session['latest_query']
+        else:
+            lat_q = "/"
+        
+        print(arroftxt)
+        return render(request,'tampilanartikel.html',{
+            'judul': getdb.judul,
+            'artikel' : arroftxt,
+            'backtrace' : lat_q,
+        })
+    else:
+        return HttpResponse("an error was happened, <a href='/' >click here to return to homepage</a>")
+
+
 
 @register.filter
 def get_item(dictionary, key):

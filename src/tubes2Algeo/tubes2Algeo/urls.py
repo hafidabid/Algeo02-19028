@@ -25,7 +25,8 @@ urlpatterns = [
     path(r'perihal/',views.perihal,{},name="home"),
     path(r'q/',views.searchresult,{},name="home2"),
     path(r'up/',views.upfile,{},name="uploader"),
-    path(r'retzeroooo/',views.reset,{},name="resetapp")
+    path(r'retzeroooo/',views.reset,{},name="resetapp"),
+    path(r'artikel/',views.artikel,{},name="artikel")
 ]
 
 if settings.DEBUG:
