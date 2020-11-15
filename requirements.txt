@@ -1,3 +1,4 @@
-django
+virtualenv
+django >= 3.0.1
 sweetify
 sastrawi

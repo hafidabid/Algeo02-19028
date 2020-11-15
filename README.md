@@ -12,26 +12,22 @@
 * [Contact](#contact)
 
 ## General info
-untuk tubes algeo heheh, implementasi dot product pada search engine
+Aplikasi search engine dengan memanfaatkan dot product
 
 ## Screenshots
 ![Example screenshot](./src/tubes2Algeo/static/img/home.png)
+![Example screenshot2](./src/tubes2Algeo/static/img/hasil-search.png)
 
 ## Technologies
 * Django - version 3
 
 ## Setup
-Install django
+Install dependecies
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
 
-Install sastrawi
-``` bash
-pip install Sastrawi
-```
-
-Untuk menjalankan web di local
+Untuk menjalankan web di local (pastikan terkoneksi ke internet)
 ``` bash
 cd src/tubes2Algeo
 ```
@@ -49,7 +45,7 @@ manage.py runserver
 * jumlah kata
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Finished for now
 
 ## Inspiration
 Pak Rinaldi Munir, Tubes 2 Algeo

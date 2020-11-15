@@ -138,6 +138,10 @@ def artikel(request):
         newpath = os.path.join(medpath,getdb.url_dokumen)
         fi = open(newpath,'r')
         arroftxt = fi.readlines()
+        a = filestorage.objects.all()
+        listfile = []
+        for x in a: 
+            listfile.append(x.judul)
 
         if "latest_query" in request.session:
             lat_q = "/q/?pencarian="+request.session['latest_query']
@@ -149,6 +153,7 @@ def artikel(request):
             'judul': getdb.judul,
             'artikel' : arroftxt,
             'backtrace' : lat_q,
+            'list' : listfile,
         })
     else:
         return HttpResponse("an error was happened, <a href='/' >click here to return to homepage</a>")
