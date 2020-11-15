@@ -22,12 +22,14 @@ Aplikasi search engine dengan memanfaatkan dot product
 * Django - version 3
 
 ## Setup
+Install python version 3.6.x keatas
+
 Install dependecies
 ```bash
 pip install -r requirements.txt
 ```
 
-Untuk menjalankan web di local (pastikan terkoneksi ke internet)
+Untuk menjalankan web di local (pastikan terkoneksi ke internet karena ada terdapat css dan js yang diambil dari internet)
 ``` bash
 cd src/tubes2Algeo
 ```
