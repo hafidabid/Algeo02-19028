@@ -22,14 +22,22 @@ untuk tubes algeo heheh, implementasi dot product pada search engine
 
 ## Setup
 Install django
-> pip install django
+```bash
+pip install django
+```
 
 Install sastrawi
-> pip install Sastrawi
+``` bash
+pip install Sastrawi
+```
 
 Untuk menjalankan web di local
-> cd src/tubes2Algeo
-> manage.py runserver
+``` bash
+cd src/tubes2Algeo
+```
+``` bash
+manage.py runserver
+```
 > buka http://127.0.0.1:8000/ di web browser
 
 ## Features
@@ -44,7 +52,7 @@ Untuk menjalankan web di local
 Project is: _in progress_, _finished_, _no longer continue_ and why?
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+Pak Rinaldi Munir, Tubes 2 Algeo
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@hafidabiiiii](https://www.instagram.com/hafidabiiiii/), [@arsa_dg](https://www.instagram.com/arsa_dg/), [@syamilcholid](https://www.instagram.com/syamilcholid/)
