@@ -15,21 +15,30 @@
 untuk tubes algeo heheh, implementasi dot product pada search engine
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./src/tubes2Algeo/static/img/home.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Django - version 3
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+Install django
+> pip install django
+
+Install sastrawi
+> pip install Sastrawi
+
+Untuk menjalankan web di local
+> cd src/tubes2Algeo
+> manage.py runserver
+> buka http://127.0.0.1:8000/ di web browser
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Search
+* Upload dokumen
+* Reset dokumen
+* tabel kamus data
+* cosine similarity
+* jumlah kata
 
 ## Status
 Project is: _in progress_, _finished_, _no longer continue_ and why?
