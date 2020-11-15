@@ -134,7 +134,6 @@ def artikel(request):
     my_param = request.GET.get('konten', "nAn")
     if my_param!="nAn":
         getdb = filestorage.objects.filter(judul=my_param).first()
-        #print(getdb.url_sastrawee)
         medpath = os.path.join(settings.BASE_DIR,'media')
         newpath = os.path.join(medpath,getdb.url_dokumen)
         fi = open(newpath,'r')
@@ -145,7 +144,7 @@ def artikel(request):
         else:
             lat_q = "/"
         
-        print(arroftxt)
+        
         return render(request,'tampilanartikel.html',{
             'judul': getdb.judul,
             'artikel' : arroftxt,
