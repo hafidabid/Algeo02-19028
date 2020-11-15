@@ -1,0 +1,30 @@
+{%extends 'basis.html'%}
+{% load static %}
+
+{%block perihal%}
+<div class="container">
+    <div class="mb-5">
+        <h1>Konsep singkat search engine</h1>
+    </div>
+    <div class="mb-5">
+        <h1>How to Use</h1>
+        <img src="{% static 'img\how-to.png'%}" style="max-width: 1000px;"/>
+        <ul>
+            <li>Sebelum melakukan search, upload dokumen yang diinginkan</li>
+            <li>Masukkan query pada textbox untuk dicari tingkat kesamaan pada setiap dokumen</li>
+            <li>Boom! hasil pencarian akan muncul dibawah</li>
+        </ul>
+    </div>
+    <div class="mb-5">
+        <h1>About Us</h1>
+        <p>Revolt Search! adalah sebuah layanan search engine yang dibuat oleh tiga pemuda:</p>
+        <ul>
+            <li>Hafid Abi Daniswara - 13519028 <a href="https://www.instagram.com/hafidabiiiii/">@hafidabiiiii</a></li>
+            <li>Arsa Daris Gintara - 13519037 <a href="https://www.instagram.com/arsa_dg/">@arsa_dg</a></li>
+            <li>Syamil Cholid Abdurrasyid - 13519052 <a href="https://www.instagram.com/syamilcholid/">@syamilcholid</a></li>
+        </ul>
+    </div>
+    <a href="/" class="btn btn-success mt-3 mb-3"><< Back to home</a>
+</div>
+
+{%endblock perihal%}
