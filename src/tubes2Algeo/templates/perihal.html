@@ -5,6 +5,15 @@
 <div class="container">
     <div class="mb-5">
         <h1>Konsep singkat search engine</h1>
+        <p>Ide utama dari sistem temu balik informasi adalah mengubah search query menjadi
+            ruang vektor Setiap dokumen maupun query dinyatakan sebagai vektor w = (w1, w2,...,
+            wn) di dalam Rn, dimana nilai wi dapat menyatakan jumlah kemunculan kata tersebut
+            dalam dokumen (term frequency). Penentuan dokumen mana yang relevan dengan
+            search query dipandang sebagai pengukuran kesamaan (similarity measure) antara
+            query dengan dokumen. Semakin sama suatu vektor dokumen dengan vektor query,
+            semakin relevan dokumen tersebut dengan query. Kesamaan tersebut dapat diukur
+            dengan cosine similarity dengan rumus:</p>
+            <img src="{% static 'img\rumus-cosine.png'%}" style="max-width: 1000px;"/>
     </div>
     <div class="mb-5">
         <h1>How to Use</h1>
